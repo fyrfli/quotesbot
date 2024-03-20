@@ -3,8 +3,10 @@ from dotenv import load_dotenv
 from os import getenv
 from random import randint
 from requests import get, post
+from sys import argv
 
 def load_env():
+    load_dotenv()
     api_key = getenv('QUOTES_ACCESS_TOKEN')
     quotes_library = getenv('QUOTES_LIBRARY')
     if quotes_library.startswith('https',0):
@@ -40,6 +42,10 @@ def make_post(headers, payload):
         print('An error occurred: ', e)
 
 if __name__ == '__main__':
+    if len(argv) > 0:
+        choice = int(argv[1])
+    else:
+        choice = int(0)
     api_key, quote_file = load_env()
-    headers, payload = build_post(api_key, quote_file)
+    headers, payload = build_post(api_key, quote_file, choice)
     make_post(headers, payload)
