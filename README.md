@@ -8,8 +8,17 @@ This is the code that posts to https://fyrfli.social/quotesbot.
 - a Mastodon-compatible API token for your instance
 - a json-formatted file of quotes to use formatted thus:
     ```
-    "quote": "quote"
-    "author": "author"
+    [
+        {
+            "quote": "quote",
+            "author": "author"
+        },
+        ...
+        {
+            "quote": "quote",
+            "author": "author"
+        }
+    ]
     ```
 Your quotes file can either be in the local directory or accessible at a url.
 
