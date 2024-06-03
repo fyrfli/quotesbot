@@ -1,6 +1,6 @@
 # @quotesbot
 
-This is the code that posts to https://fyrfli.social/quotesbot.
+This is the code that posts to https://bots.fyrfli.social/@quotesbot.
 
 ## Requirements:
 - some knowledge of the linux command line
