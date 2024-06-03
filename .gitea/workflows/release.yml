@@ -1,0 +1,24 @@
+on:
+  push:
+    tags:
+      - 'v*'
+name: create release
+jobs:
+  build:
+    name: create release
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: create the release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITEA_TOKEN: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        with:
+          tag_name: ${{ gitea.ref }}
+          release_name: release ${{ gitea.ref }}
+          body: |
+            releasing ${{ gitea.ref }} for ${{ gitea.repository }}
+          make_latest: true
